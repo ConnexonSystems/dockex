@@ -137,7 +137,7 @@ bash /path/to/dockex/dockex_bootstrap/dockex_bootstrap.sh
 ```
 
 Dockex will then build and run its microservices. You can monitor its progress by watching currently running Docker 
-containers with the following. Hit ctrl-C to exit.
+containers with the following. Hit ctrl-c to exit.
 
 ```
 watch -n 1 docker container ls
