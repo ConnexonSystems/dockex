@@ -54,7 +54,7 @@ For GPU support, you must have NVIDIA drivers installed and enable a flag in the
 
 For Ubuntu 16.04 installation instructions, see [here](docs/ubuntu_1604_install.md).
 
-For Ubuntu 18.04 installation instructions, see here (coming soon!).
+For Ubuntu 18.04 installation instructions, see [here](docs/ubuntu_1804_install.md).
 
 <a name="GettingStarted"></a>
 ## Getting Started
