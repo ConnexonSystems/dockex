@@ -1,0 +1,8 @@
+{
+  "name": "tmp_dockex_ftpd",
+  "path": "core/services/ftp/tmp_dockex_ftpd",
+  "params": {
+    "path": "/tmp/dockex"
+  },
+  "pass_redis_address_arg": true
+}

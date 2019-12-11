@@ -1,0 +1,6 @@
+{
+  "name": "experiment_worker",
+  "path": "core/services/experiment/experiment_worker",
+  "pass_redis_address_arg": true,
+  "bind_mount_docker_socket": true
+}

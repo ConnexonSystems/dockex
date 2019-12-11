@@ -1,0 +1,5 @@
+{
+  "name": "dockex_machine_monitor",
+  "path": "core/services/monitors/dockex_machine_monitor",
+  "pass_redis_address_arg": true
+}

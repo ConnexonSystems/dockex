@@ -1,0 +1,6 @@
+{
+  "name": "json_launcher",
+  "path": "core/services/launchers/json_launcher",
+  "pass_redis_address_arg": true,
+  "bind_mount_docker_socket": true
+}

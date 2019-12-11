@@ -1,0 +1,5 @@
+{
+  "name": "machine_discovery",
+  "path": "core/services/network/machine_discovery",
+  "pass_redis_address_arg": true
+}

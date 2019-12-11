@@ -1,0 +1,5 @@
+{
+  "name": "decrement_dependency",
+  "path": "core/services/experiment/decrement_dependency",
+  "pass_redis_address_arg": true
+}

@@ -1,0 +1,37 @@
+// Dockex app theme
+
+$black:                         #000000;
+$white:                         #ffffff;
+
+$body-bg:                       $black !default;
+$body-color:                    $white !default;
+$border-color:                  $white !default;
+$component-active-color:        $black !default;
+$aside-menu-color:              $white !default;
+$aside-menu-bg:                 $black !default;
+$input-bg:                      $black !default;
+$input-color:                   $white !default;
+$input-placeholder-color:       $white !default;
+$text-muted:                    $white !default;
+$navbar-bg:                     $black !default;
+$navbar-color:                  $white !default;
+$navbar-hover-color:            $white !default;
+$breadcrumb-divider-color:      $white !default;
+$breadcrumb-active-color:       $white !default;
+$breadcrumb-bg:                 $black !default;
+$card-bg:                       $black !default;
+$card-cap-bg:                   $black !default;
+$sidebar-color:                 $white !default;
+$sidebar-bg:                    $black !default;
+$sidebar-nav-link-active-bg:    $black !default;
+$sidebar-nav-link-icon-color:   $white !default;
+$footer-bg:                     $black !default;
+$progress-bg:                   $black !default;
+
+$sidebar-borders: (
+  right: (
+    size: 2px,
+    style: solid,
+    color: $border-color
+  )
+) !default;

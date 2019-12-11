@@ -1,0 +1,5 @@
+{
+  "name": "redis_launcher",
+  "path": "core/services/launchers/redis_launcher",
+  "pass_redis_address_arg": true
+}

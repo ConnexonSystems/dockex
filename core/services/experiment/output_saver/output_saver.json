@@ -1,0 +1,5 @@
+{
+  "name": "output_saver",
+  "path": "core/services/experiment/output_saver",
+  "pass_redis_address_arg": true
+}

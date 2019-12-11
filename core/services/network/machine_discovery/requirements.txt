@@ -1,0 +1,2 @@
+redis == 3.3.11
+python-nmap == 0.6.1

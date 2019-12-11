@@ -1,0 +1,5 @@
+{
+  "name": "app_server",
+  "path": "core/services/frontend/app_server",
+  "omit_json_pathname_arg": true
+}

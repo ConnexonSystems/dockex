@@ -1,0 +1,5 @@
+{
+  "name": "progress_monitor",
+  "path": "core/services/monitors/progress_monitor",
+  "pass_redis_address_arg": true
+}

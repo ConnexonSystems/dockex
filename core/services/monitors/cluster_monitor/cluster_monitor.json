@@ -1,0 +1,5 @@
+{
+  "name": "cluster_monitor",
+  "path": "core/services/monitors/cluster_monitor",
+  "pass_redis_address_arg": true
+}

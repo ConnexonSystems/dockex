@@ -1,0 +1,9 @@
+{
+    "ip_address": "127.0.0.1",
+    "redis_port": 6379,
+    "webdis_port": 7379,
+    "app_port": 3001,
+    "tmp_dockex_path": "/tmp/dockex",
+    "tmp_dockex_ftpd_port": 2003,
+    "enable_gpus": false
+}

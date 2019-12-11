@@ -1,0 +1,5 @@
+{
+  "name": "hardware_monitor",
+  "path": "core/services/monitors/hardware_monitor",
+  "pass_redis_address_arg": true
+}

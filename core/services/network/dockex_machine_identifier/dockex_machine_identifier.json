@@ -1,0 +1,5 @@
+{
+  "name": "dockex_machine_identifier",
+  "path": "core/services/network/dockex_machine_identifier",
+  "pass_redis_address_arg": true
+}
