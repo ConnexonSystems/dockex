@@ -116,6 +116,8 @@ docker run -it --rm --gpus all ubuntu
 nvidia-smi
 ```
 
+Press ctrl-d to exit the container.
+
 If the nvidia-docker installation was successfull, enable GPU utilization by Dockex. Create a ```user_config.json``` 
 file by copying ```dockex/base_config.json```. Then edit ```user_config.json``` to set ```enable_gpus``` to ```true```.
 
