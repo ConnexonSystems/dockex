@@ -68,24 +68,54 @@ monitor the startup process by watching the list of active containers.
 
 ```watch -n 1 docker container ls```
 
-When there are no containers with the ```wrapper_``` prefix running, startup is complete.
+Once the following 16 containers are listed as running, startup is complete.
 
-You can access the Dockex GUI by opening a browser and navigating to ```127.0.0.1:3001```.
+```
+app_server
+cluster_monitor
+credits_monitor
+credits_updater
+decrement_dependency
+dockex_machine_identifier
+dockex_machine_monitor
+dockex_redis
+dockex_webdis
+experiment_worker
+hardware_monitor
+json_launcher
+machine_discovery
+output_saver
+progress_monitor
+redis_launcher
+```
 
+You can then access the Dockex GUI by opening a browser and navigating to ```127.0.0.1:3001```.
+
+### Example Experiment
 You can find a self-contained mnist_experiment example [here](https://github.com/ChrisHeelan/mnist_experiment).
 
-To run the mnist_experiment, clone the repository, navigate to the Dockex ```LAUNCH``` screen, and submit the following.
+To run the experiment:
 
-* Project Path: ```/path/to/mnist_experiment```
-* Experiment Path: ```experiments/mnist_experiment.py```
+1. Clone the repository.
 
-Dockex will build the modules to prepare the experiment. Note that building modules initially may take some 
-time; however, the process is typically much shorter when running modules subsequent times.
+    ```
+    git clone https://github.com/ChrisHeelan/mnist_experiment
+    ```
 
-To allow Dockex to begin executing jobs, navigate to the ```MACHINES``` screen and increase the number of available CPU 
-credits (e.g. 4). In mnist_experiment, each job requires 1 credit to run.
+2. Navigate to the Dockex ```LAUNCH``` screen, and submit the following.
 
-Results will be written to the tmp_dockex_path (defaults to ```/tmp/dockex/data```).
+    * Project Path: ```/path/to/mnist_experiment```
+    * Experiment Path: ```experiments/mnist_experiment.py```
+
+    Dockex will build the modules to prepare the experiment. Note that building modules initially may take some 
+    time; however, the process is typically much shorter when running modules subsequent times (assuming you don't 
+    remove the images).
+
+3. Navigate to the ```MACHINES``` screen and increase the number of available CPU credits (e.g. 4) to control the 
+number of parallel jobs. In mnist_experiment, each job requires 1 CPU credit to run.
+
+4. Monitor the experiment execution on the ```PROGRESS``` screen. Results will be written to the tmp_dockex_path 
+(defaults to ```/tmp/dockex/data```).
 
 <a name="Documentation"></a>
 ## Documentation
