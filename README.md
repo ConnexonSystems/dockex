@@ -52,9 +52,9 @@ Installation consists of installing Docker-CE v19.03.5 and cloning the Dockex re
 
 For GPU support, you must have NVIDIA drivers installed and enable a flag in the Dockex configuration file.
 
-For Ubuntu 16.04 installation instructions, see here (coming soon!).
+For Ubuntu 16.04 installation instructions, see [here](docs/ubuntu_1604_install.md).
 
-For Ubuntu 18.04 installation instructions, see here (coming soon!). 
+For Ubuntu 18.04 installation instructions, see here (coming soon!).
 
 <a name="GettingStarted"></a>
 ## Getting Started
