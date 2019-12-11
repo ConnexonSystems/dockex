@@ -128,14 +128,14 @@ Coming soon!
 If you use Dockex in a scientific publication, we would appreciate citations to this repository: 
 
 ```
-@software{Dockex,
+@software{dockex,
   author       = {ChrisHeelan},
-  title        = {ConnexonSystems/Dockex: Initial Release},
-  month        = nov,
+  title        = {ConnexonSystems/dockex: Initial Release},
+  month        = dec,
   year         = 2019,
   publisher    = {Zenodo},
-  version      = {v0.0},
-  doi          = {10.5281/zenodo.3527651},
-  url          = {https://doi.org/10.5281/zenodo.3527651}
+  version      = {v0.0.1},
+  doi          = {10.5281/zenodo.3570735},
+  url          = {https://doi.org/10.5281/zenodo.3570735}
 }
 ```
