@@ -34,13 +34,13 @@ def update(dict_to_update, dict_with_updates):
 
 class ExperimentManager(abc.ABC):
     def __init__(
-        self,
-        project_path="/home/experiment/project",  # according to core/experiment/dockex_experiment
-        tmp_dockex_path="/tmp/dockex",
-        initial_job_num=None,
-        experiment_name_prefix=None,
-        sleep_seconds=0.5,
-        save_project=False,
+            self,
+            project_path="/home/experiment/project",  # according to core/experiment/dockex_experiment
+            tmp_dockex_path="/tmp/dockex",
+            initial_job_num=None,
+            experiment_name_prefix=None,
+            sleep_seconds=0.5,
+            save_project=False,
     ):
 
         super().__init__()
@@ -89,15 +89,23 @@ class ExperimentManager(abc.ABC):
                 f"{self.experiment_name_prefix}_{self.experiment_name}"
             )
 
-        self.csv_filename = f"{self.experiment_name}.csv"
+        self.csv_filename = f"jobs_{self.experiment_name}.csv"
         self.csv_pathname = (
             f"/tmp/dockex/data/{self.csv_filename}"
+        )  # this assumes we're running in a container or using /tmp/dockex locally
+
+        self.trials_csv_filename = f"trials_{self.experiment_name}.csv"
+        self.trials_csv_pathname = (
+            f"/tmp/dockex/data/{self.trials_csv_filename}"
         )  # this assumes we're running in a container or using /tmp/dockex locally
 
         self.extra_output_pathnames = []
         self.save_project = save_project
         self.project_archive_pathname = None
         self.project_archive_filename = None
+
+        self.trial_dict = dict()
+        self.trials_list = []
 
     def send_to_output_saver(self, extra_output_pathname):
         self.extra_output_pathnames.append(extra_output_pathname)
@@ -109,17 +117,19 @@ class ExperimentManager(abc.ABC):
         return job_name, job_num
 
     def add_job(
-        self,
-        module_path,
-        params=None,
-        input_pathnames=None,
-        skip_job=False,
-        skip_input_pathnames=False,
-        skip_output_pathnames=False,
-        cpu_credits=1,
-        gpu_credits=0,
-        save_outputs=False,
-        params_nested_update=False,
+            self,
+            module_path,
+            params=None,
+            input_pathnames=None,
+            skip_job=False,
+            skip_input_pathnames=False,
+            skip_output_pathnames=False,
+            cpu_credits=1,
+            gpu_credits=0,
+            save_outputs=False,
+            params_nested_update=False,
+            trial_tag=None,
+            save_trial=False
     ):
 
         if cpu_credits == 0 and gpu_credits == 0:
@@ -195,6 +205,12 @@ class ExperimentManager(abc.ABC):
         if skip_job is False:
             self.job_list.append(copy.deepcopy(config))
 
+        if trial_tag is not None:
+            self.trial_dict[trial_tag] = copy.deepcopy(config)
+        
+        if save_trial is True:
+            self.trials_list.append(copy.deepcopy(self.trial_dict))
+
         return config["output_pathnames"]
 
     def archive_project(self):
@@ -244,6 +260,10 @@ class ExperimentManager(abc.ABC):
 
         # store the job csv in the experiment zip file
         self.redis_client.rpush("output_saver", self.csv_filename)
+
+        # if a trials csv exists, store it in the experiment zip file
+        if os.path.isfile(self.trials_csv_pathname):
+            self.redis_client.rpush("output_saver", self.trials_csv_filename)
 
         # send extra outputs to output_saver
         for extra_output_pathname in self.extra_output_pathnames:
@@ -374,8 +394,8 @@ class ExperimentManager(abc.ABC):
 
                     if input_pathname is not None:
                         if (
-                            skip_input_pathnames is False
-                            or skip_input_pathnames is None
+                                skip_input_pathnames is False
+                                or skip_input_pathnames is None
                         ):
                             self.dependency_lookup_db.sadd(input_pathname, name)
                             num_input_pathnames += 1
@@ -420,6 +440,11 @@ class ExperimentManager(abc.ABC):
         print("GENERATING JOB CSV")
         pd.DataFrame(self.job_list).to_csv(self.csv_pathname)
 
+    def generate_trial_csv(self):
+        print('GENERATING TRIALS CSV')
+        if len(self.trials_list) > 0:
+            pd.DataFrame(self.trials_list).to_csv(self.trials_csv_pathname)
+
     def copy_project(self):
         print("COPYING PROJECT")
         self.redis_client.set("status", "COPYING PROJECT DIRECTORY")
@@ -447,6 +472,7 @@ class ExperimentManager(abc.ABC):
         print("RUNNING EXPERIMENT")
         self.redis_client.set("status", "RUNNING EXPERIMENT")
         self.generate_job_csv()
+        self.generate_trial_csv()
 
         self.acquire_prevent_experiment_overlap_flag()
 
