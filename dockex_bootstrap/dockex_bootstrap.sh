@@ -10,4 +10,4 @@ fi
 
 # build bootstrap image and run container
 docker build -f dockex_bootstrap/Dockerfile --tag=dockex_bootstrap_image . && \
-    docker run -d -v /var/run/docker.sock:/var/run/docker.sock --name dockex_bootstrap dockex_bootstrap_image
+    docker run -it -v /var/run/docker.sock:/var/run/docker.sock --name dockex_bootstrap dockex_bootstrap_image
