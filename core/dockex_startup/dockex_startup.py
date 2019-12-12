@@ -46,20 +46,13 @@ class DockexStartup:
 
             config.update(user_config)
 
-        # TODO: disable distributed mode for now
-        # if "network_interface" in config.keys():
-        #     try:
-        #         config["ip_address"] = self.get_ip_address(config["network_interface"])
-        #
-        #     except OSError as e:
-        #         print("ERROR: bad network interface")
-        #         raise e
+        if "network_interface" in config.keys():
+            try:
+                config["ip_address"] = self.get_ip_address(config["network_interface"])
 
-        # TODO: disable distributed mode for now
-        print(
-            "Forcing IP to 127.0.0.1. Distributed mode will be enabled in a future release."
-        )
-        config["ip_address"] = "127.0.0.1"
+            except OSError as e:
+                print("ERROR: bad network interface")
+                raise e
 
         config["redis_address"] = (
             "http://" + config["ip_address"] + ":" + str(config["redis_port"])
@@ -321,10 +314,9 @@ class DockexStartup:
             "core/services/network/dockex_machine_identifier/dockex_machine_identifier.json"
         )
 
-        # TODO: disable distributed mode for now
         # only run ftpd if running distributed
-        # if self.config['ip_address'] != "127.0.0.1":
-        #     self.redis_client.json_launch_job("core/services/ftp/tmp_dockex_ftpd/tmp_dockex_ftpd.json")
+        if self.config['ip_address'] != "127.0.0.1":
+            self.redis_client.json_launch_job("core/services/ftp/tmp_dockex_ftpd/tmp_dockex_ftpd.json")
 
         self.redis_client.json_launch_job(
             "core/services/experiment/output_saver/output_saver.json"
