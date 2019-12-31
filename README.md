@@ -7,6 +7,11 @@ using containers. NVIDIA GPU support is included.
 
 ![Dockex MNIST Experiment progress](docs/dockex_mnist_experiment_progress.gif)
 
+__Demo:__ The GIF above shows a Dockex cluster running on Google Cloud Platform composed of 16 VMs with 192 CPU cores, 
+759 GB of RAM, and 16 GPUs (4 T4's, 4 P100's, and 8 K80's). An MNIST experiment is executed that trains and evaluates 
+ 99 logistic regression models, 135 k-nearest neighbor models, 33 random forest models, and 54 convolutional neural 
+ network models. The GIF is rendered at 2x actual speed.
+
 ## Under Development:
 
 This is a pre-release version of Dockex that is under active development. Please consider this version experimental. 
@@ -27,7 +32,7 @@ Tests and documentation are coming soon at which point we will welcome contribut
 <a name="Introduction"></a>
 ## Introduction
 
-As a machine learning and data science infrastructure, Dockex enables the development of easily shareable code 
+Dockex is a machine learning and data science infrastructure that enables the development of easily shareable code 
 "modules" that run in self-contained containers. With Dockex, there is no more finding exciting code only to 
 waste hours figuring out the required installation process and picking through the source to discover how you can 
 integrate it into your workflow. When using a new Dockex module, no additional installation is required, and software 
@@ -52,7 +57,8 @@ Dockex officially supports Ubuntu 16.04 and Ubuntu 18.04. Expanded operating sys
 
 Installation consists of installing Docker-CE v19.03.5 and cloning the Dockex repository. 
 
-For GPU support, you must have NVIDIA drivers installed and enable a flag in the Dockex configuration file.
+For GPU support, you must install the appropriate NVIDIA drivers, install the NVIDIA Container Toolkit, and enable a 
+flag in the Dockex configuration file.
 
 For Ubuntu 16.04 installation instructions, see [here](docs/ubuntu_1604_install.md).
 
@@ -61,7 +67,7 @@ For Ubuntu 18.04 installation instructions, see [here](docs/ubuntu_1804_install.
 <a name="GettingStarted"></a>
 ## Getting Started
 
-Once Dockex is installed, start the system by calling the bootstrap script.
+Once Dockex is installed, start the system by executing the bootstrap script.
 
 ```bash /path/to/dockex/dockex_bootstrap/dockex_bootstrap.sh```
 
