@@ -5,6 +5,8 @@
 Dockex is an open-source orchestration and monitoring tool for easily running local or distributed computational experiments 
 using containers. NVIDIA GPU support is included.
 
+![Dockex MNIST Experiment progress](docs/dockex_mnist_experiment_progress.gif)
+
 ## Under Development:
 
 This is a pre-release version of Dockex that is under active development. Please consider this version experimental. 
