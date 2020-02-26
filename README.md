@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/219467652.svg)](https://zenodo.org/badge/latestdoi/219467652)
 
-![Alt text](docs/img/dockex_black.svg)
+![Dockex](docs/img/dockex_black.svg)
 
 Dockex is an open-source orchestration and monitoring tool for easily running local or distributed computational experiments 
 using containers. NVIDIA GPU support is included.
@@ -31,6 +31,8 @@ Tests and documentation are coming soon at which point we will welcome contribut
 
 <a name="Introduction"></a>
 ## Introduction
+
+![Dockex](docs/img/dockex_block_diagram.png)
 
 Dockex is a machine learning and data science infrastructure that enables the development of easily shareable code 
 "modules" that run in self-contained containers. With Dockex, there is no more finding exciting code only to 
